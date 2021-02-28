@@ -1,19 +1,49 @@
-#My aliases
-alias gs='git status -sb'
-alias gaa='git add --all'
+# ----------------------
+# Git Aliases
+# ----------------------
+alias gi='git init'
+alias ga='git add'
+alias gaa='git add -A'
+alias gci='git commit -m ":tada: $2 :sparkles:"'
 alias gc='git commit -m $2'
 alias gp='git push'
 alias gpo='git push origin'
 alias gpl='git pull'
+alias gf='git fetch'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gsb='git status -sb'
+alias gs='echo ""; echo "*********************************************"; echo -e "   DO NOT FORGET TO PULL BEFORE COMMITTING"; echo "*********************************************"; echo ""; git status'
+alias gr='git remote -v'
+alias gra='git remote add $1 $2'
 
-alias ls='ls -F --color=auto --show-control-chars'
+# -------
+# Aliases
+# -------
+alias ls='ls -a -F --color=auto --show-control-chars'
 alias ll='ls -la'
-alias rm='rm -iv'
+alias rm='rm -iv -rf'
+alias exp='explorer .'
+alias c='code .'
+alias cf='code $2'
+alias back="cd .."
+
+# ----------
+# Functions
+# ----------
+function mkcd()
+{
+	mkdir $1 && cd $1
+}
+
+# ------------------------------------
 
 WINDOW_TITLE="🐱‍💻 KillerCoderPT 💻"
 
-Cat << 'EOF'
+echo -e "$(clear)"
+echo -e "\e[38;5;15mWelcome back \e[38;5;9m$(whoami)\e[38;5;15m!"
+echo -e "\e[38;5;41m$(date)\e[38;5;15m"
+
+cat << 'EOF'
               ...                            
              ;::::;                           
            ;::::; :;                          
@@ -37,8 +67,6 @@ Cat << 'EOF'
    ::::::`:::::;'  /  /   `#              
 EOF
 
-echo -e "\e[38;5;15mWelcome back \e[38;5;9m$(whoami)\e[38;5;15m!"
-echo -e "\e[38;5;41m$(date)"
 
 if test -f /etc/profile.d/git-sdk.sh
 then
