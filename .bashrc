@@ -8,7 +8,7 @@ alias gpl='git pull'
 alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 alias ls='ls -F --color=auto --show-control-chars'
-alias ll='ls -l'
+alias ll='ls -la'
 alias rm='rm -iv'
 
 WINDOW_TITLE="🐱‍💻 KillerCoderPT 💻"
@@ -36,6 +36,9 @@ Cat << 'EOF'
   `:::::`::::::::;' /  / `:#                  
    ::::::`:::::;'  /  /   `#              
 EOF
+
+echo -e "\e[38;5;15mWelcome back \e[38;5;9m$(whoami)\e[38;5;15m!"
+echo -e "\e[38;5;41m$(date)"
 
 if test -f /etc/profile.d/git-sdk.sh
 then
