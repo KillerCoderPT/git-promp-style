@@ -4,7 +4,6 @@
 alias gi='git init'
 alias ga='git add'
 alias gaa='git add -A'
-alias gci='git commit -m ":tada: $2 :sparkles:"'
 alias gc='git commit -m $2'
 alias gp='git push'
 alias gpo='git push origin'
