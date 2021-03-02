@@ -35,6 +35,10 @@ function mkcd()
 }
 
 # ------------------------------------
+# Make sure all non-printable bytes in your PS1 are contained within \[ \]
+# Otherwise, bash will count them in the length of the prompt.
+# It uses the length of the prompt to determine when to wrap the line
+# ------------------------------------
 
 WINDOW_TITLE="🐱‍💻 KillerCoderPT 💻"
 
@@ -79,14 +83,14 @@ then
 	. ~/.config/git/git-prompt.sh
 else
 	PS1='\[\033]0;$WINDOW_TITLE\007\]' 				# set window title
-	PS1="$PS1"'\n'                                  # new line
+	PS1="$PS1"'\[\n\]'                                  # new line
     PS1="$PS1"'💀 '
-    PS1="$PS1"'\e[38;5;9m{'
-    PS1="$PS1"'\e[38;5;15m\u'
-    PS1="$PS1"'\e[38;5;9m}'
-    PS1="$PS1"' 💀 '
-    PS1="$PS1"'\e[38;5;226m★ '
-    PS1="$PS1"'\e[38;5;45m${PWD#"${PWD%/*/*}/"}'
+    PS1="$PS1"'\[\e[38;5;9m{\]'
+    PS1="$PS1"'\[\e[38;5;15m\u\]'
+    PS1="$PS1"'\[\e[38;5;9m}\]'
+    PS1="$PS1"'\[ 💀 \]'
+    PS1="$PS1"'\[\e[38;5;226m★ \]'
+    PS1="$PS1"'\[\e[38;5;45m${PWD#"${PWD%/*/*}/"}\]'
     if test -z "$WINELOADERNOEXEC"
 	then
 		GIT_EXEC_PATH="$(git --exec-path 2>/dev/null)"
@@ -97,18 +101,18 @@ else
 		then
 			. "$COMPLETION_PATH/git-completion.bash"
 			. "$COMPLETION_PATH/git-prompt.sh"
-			PS1="$PS1"'\e[38;5;226m ★ '
-            PS1="$PS1"'\e[38;5;9m['
-            PS1="$PS1"'\e[38;5;15m\A'
-            PS1="$PS1"'\e[38;5;9m]'
-			PS1="$PS1"'\e[38;5;40m'  # change color
-			PS1="$PS1"'`__git_ps1`'   # bash function
+			PS1="$PS1"'\[\e[38;5;226m ★ \]'
+            PS1="$PS1"'\[\e[38;5;9m[\]'
+            PS1="$PS1"'\[\e[38;5;15m\A\]'
+            PS1="$PS1"'\[\e[38;5;9m]\]'
+			PS1="$PS1"'\[\e[38;5;40m\]'  # change color
+			PS1="$PS1"'\[`__git_ps1`\]'   # bash function
 		fi
 	fi
-    PS1="$PS1"" \`if [ \$? = 0 ]; then echo 🤖; else echo 🔥; fi\`"
+    PS1="$PS1""\[ \`if [ \$? = 0 ]; then echo 🤖; else echo 🔥; fi\`\]"
 	PS1="$PS1"'\n'                 # new line
-	PS1="$PS1"'\e[38;5;126m$ '      # prompt: always $
-	PS1="$PS1"'\e[38;5;46m'        # change color
+	PS1="$PS1"'\e[38;5;126m$ \[\]'      # prompt: always $
+	PS1="$PS1"'\[\e[38;5;46m\]'        # change color
     trap '[[ -t 1 ]] && tput sgr0' DEBUG # reset the terminal color right before bash executes the command
 fi
 
@@ -124,6 +128,11 @@ then
 		. "$c"
 	done
 fi
+
+# Permanently disable bash history
+set +o history
+
+set horizontal-scroll-mode off
 
 # #Git status options
 # export GIT_PS1_SHOWSTASHSTATE=true
