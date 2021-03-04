@@ -40,10 +40,10 @@ function mkcd()
 # It uses the length of the prompt to determine when to wrap the line
 # ------------------------------------
 
-WINDOW_TITLE="🐱‍💻 KillerCoderPT 💻"
+WINDOW_TITLE="💀 $(whoami) 💀"
 
 echo -e "$(clear)"
-echo -e "\e[38;5;15mWelcome back \e[38;5;9m$(whoami)\e[38;5;15m!"
+echo -e "\e[38;5;15mWelcome back \e[38;5;9m$(whoami)\e[38;5;15m! 💀"
 echo -e "\e[38;5;41m$(date)\e[38;5;15m"
 
 cat << 'EOF'
@@ -84,7 +84,7 @@ then
 else
 	PS1='\[\033]0;$WINDOW_TITLE\007\]' 				# set window title
 	PS1="$PS1"'\[\n\]'                                  # new line
-    PS1="$PS1"'💀 '
+    PS1="$PS1"'\[💀 \]'
     PS1="$PS1"'\[\e[38;5;9m{\]'
     PS1="$PS1"'\[\e[38;5;15m\u\]'
     PS1="$PS1"'\[\e[38;5;9m}\]'
@@ -111,7 +111,7 @@ else
 	fi
     PS1="$PS1""\[ \`if [ \$? = 0 ]; then echo 🤖; else echo 🔥; fi\`\]"
 	PS1="$PS1"'\n'                 # new line
-	PS1="$PS1"'\e[38;5;126m$ \[\]'      # prompt: always $
+	PS1="$PS1"'\[\e[38;5;126m\]$ '      # prompt: always $
 	PS1="$PS1"'\[\e[38;5;46m\]'        # change color
     trap '[[ -t 1 ]] && tput sgr0' DEBUG # reset the terminal color right before bash executes the command
 fi
