@@ -9,7 +9,7 @@ The right way to create a style for the git bash prompt is using the command `co
 # What you need
 
 * Git bash
-* Put the file in your home directory, for windows users `C:\Users\<Your User>`
+* Put the file `.bashrc` in your home directory, for windows users `C:\Users\<Your User>`
 
 # Very useful links
 
