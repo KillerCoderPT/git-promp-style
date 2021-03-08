@@ -6,6 +6,11 @@
 
 The right way to create a style for the git bash prompt is using the command `code ~/.bashrc` and edit the file. This will generate a new styled prompt and this file we can edit whitout any problem.
 
+# What you need
+
+* Git bash
+* Put the file in your home directory, for windows users `C:\Users\<Your User>`
+
 # Very useful links
 
 Have some cool things:
